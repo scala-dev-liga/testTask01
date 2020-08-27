@@ -2,7 +2,8 @@ import java.io.File
 
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.sql.SparkSession
-import sparkml.STG1
+import sparkml.{STG1, STG2}
+
 
 object Driver extends App {
   Logger.getLogger("org").setLevel(Level.ERROR)
@@ -11,10 +12,11 @@ object Driver extends App {
   val warehouseLocation = new File("spark-warehouse").getAbsolutePath
 
   val spark = SparkSession.builder()
-              .master("local")
-              .appName("SparkML")
-              .getOrCreate()
+    .master("local")
+    .appName("SparkML")
+    .getOrCreate()
 
   println("Spark Session has created")
   STG1.executeLR(spark)
+  STG2.executeLR(spark)
 }
