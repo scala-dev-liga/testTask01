@@ -2,7 +2,7 @@ import java.io.File
 
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.sql.SparkSession
-import sparkml.{STG1, STG2}
+import sparkml.{STG1, STG2, STG3}
 
 
 object Driver extends App {
@@ -19,4 +19,5 @@ object Driver extends App {
   println("Spark Session has created")
   STG1.executeLR(spark)
   STG2.executeLR(spark)
+  STG3.executeLR(spark)
 }
